@@ -8,26 +8,26 @@ namespace RecipeCookbook.Data
 {
     public class RecipeManager
     {
-		IRestService restService;
+		//IRestService restService;
 
-		public RecipeManager(IRestService service)
-		{
-			restService = service;
-		}
+		//public RecipeManager(IRestService service)
+		//{
+		//	restService = service;
+		//}
 
-		public Task<List<RecipeItem>> GetTasksAsync()
-		{
-			return restService.RefreshDataAsync();
-		}
+		//public Task<List<RecipeItem>> GetTasksAsync()
+		//{
+		//	return restService.GetAllRecipes();
+		//}
 
-		public Task SaveTaskAsync(RecipeItem item, bool isNewItem = false)
-		{
-			return restService.SaveRecipeItemAsync(item, isNewItem);
-		}
+		//public Task SaveTaskAsync(RecipeItem item, bool isNewItem = false)
+		//{
+		//	return restService.SaveRecipeItemAsync(item, isNewItem);
+		//}
 
-		public Task DeleteTaskAsync(RecipeItem item)
-		{
-			return restService.DeleteRecipeItemAsync(item.RecipeId);
-		}
+		//public Task DeleteTaskAsync(RecipeItem item)
+		//{
+		//	return restService.DeleteRecipeItemAsync(item.RecipeId);
+		//}
 	}
 }

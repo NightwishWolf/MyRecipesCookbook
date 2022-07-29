@@ -635,3 +635,15 @@ C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\
 C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Text.Encodings.Web.dll
 C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Text.Json.dll
 C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Threading.Tasks.Extensions.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\Autofac.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\Newtonsoft.Json.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Collections.Concurrent.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Collections.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Diagnostics.Debug.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Diagnostics.Tracing.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Reflection.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Resources.ResourceManager.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Runtime.Extensions.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Runtime.InteropServices.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Threading.dll

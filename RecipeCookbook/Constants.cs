@@ -16,7 +16,7 @@ namespace RecipeCookbook
             // The ports are defined in TodoApi under Properties/launchSettings.json
             public static string RestUrl
                 = DeviceInfo.Platform == DevicePlatform.Android
-                ? "http://10.0.2.2:5224/Recipes/{0}"
-                : "http://localhost:5224/Recipes/{0}";
+                ? "http://10.0.2.2:5224/Recipes"
+                : "http://localhost:5224/Recipes";
         }
     }

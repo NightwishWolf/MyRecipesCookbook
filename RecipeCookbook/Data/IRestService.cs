@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 namespace RecipeCookbook.Data
 {
     public interface IRestService
-    {
-        Task<List<RecipeItem>> RefreshDataAsync();
+    { }
+    //{
+    //    Task<List<RecipeItem>> GetAllRecipes();
 
-        Task SaveRecipeItemAsync(RecipeItem item, bool isNewItem);
+    //    Task SaveRecipeItemAsync(RecipeItem item, bool isNewItem);
 
-        Task DeleteRecipeItemAsync(int recipeId);
-    }
+    //    Task DeleteRecipeItemAsync(int recipeId);
+    //}
 }

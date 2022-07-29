@@ -1,0 +1,17 @@
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\bin\Debug\netstandard2.1\RecipeCookbook.deps.json
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\bin\Debug\netstandard2.1\RecipeCookbook.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\bin\Debug\netstandard2.1\RecipeCookbook.pdb
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\RecipeCookbook.csproj.AssemblyReference.cache
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\RecipeCookbook.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\App.xaml.g.cs
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\AppShell.xaml.g.cs
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\MainPage.xaml.g.cs
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\Views\RecipeOverview.xaml.g.cs
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\RecipeCookbook.AssemblyInfoInputs.cache
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\RecipeCookbook.AssemblyInfo.cs
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\RecipeCookbook.csproj.CoreCompileInputs.cache
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\XamlC.stamp
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\RecipeCookbook.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\refint\RecipeCookbook.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\RecipeCookbook.pdb
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook\obj\Debug\netstandard2.1\ref\RecipeCookbook.dll

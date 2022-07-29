@@ -1,12 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RecipeCookbook.Views.RecipeOverview">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Hahah!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:RecipeCookbook.ViewModels"
+             xmlns:model="clr-namespace:RecipeCookbook.Models"
+             x:Class="RecipeCookbook.Views.RecipeOverview"
+             x:Name="RecipesOverview"
+             Title="Recipe overview">
+
+    <RefreshView Padding="10" x:DataType="local:RecipeViewModel" Command="{Binding LoadRecipes}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name="ItemsListView" ItemsSource="{Binding RecipeItems}" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <RelativeLayout Padding="10" x:DataType="model:RecipeItem">
+                        <Label Text="{Binding RecipeName}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                        <!--<Label Text="" FontFamily="FontAwesomeSolid" FontSize="20" HorizontalOptions="End" VerticalOptions="End" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=leave, Property=X, Constant=-40}" />-->
+                    </RelativeLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
 </ContentPage>
