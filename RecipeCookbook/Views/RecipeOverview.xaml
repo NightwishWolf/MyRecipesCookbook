@@ -7,43 +7,53 @@
              x:Name="RecipesOverview"
              Title="Recipe overview">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New"  />
+    </ContentPage.ToolbarItems>
+
     <RefreshView Padding="10" x:DataType="local:RecipeViewModel" 
                  Command="{Binding LoadRecipes}" 
                  IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        
+
         <CollectionView x:Name="ItemsListView" 
                         ItemsSource="{Binding RecipeItems}" 
                         SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:RecipeItem">
-                    <Grid RowDefinitions="*" 
-                          ColumnDefinitions="*" 
-                          Padding="0,0,10,0"
-                          WidthRequest="340"
-                          HorizontalOptions="Fill"
-                          VerticalOptions="Fill">
-                   
 
-                        <Image Source="{Binding ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" AutomationProperties.IsInAccessibleTree="False"/>
-                        <Label x:Name="recipeName"
-                               Padding="10"
-                               HorizontalOptions="Center" 
-                               VerticalOptions="Center"
-                               Text="{Binding RecipeName}"
-                               LineBreakMode="WordWrap" 
-                               MaxLines="3"
-                               FontSize="16"
-                               FontAttributes="Bold" />
+
+            <CollectionView.ItemTemplate>
+
+
+                <DataTemplate x:DataType="model:RecipeItem">
+
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+
+
+                        <Image Grid.RowSpan="2"
+                       Source="{Binding ImageUrl}"
+                       Aspect="AspectFill"
+                       HeightRequest="100"
+                       WidthRequest="100" />
+                        <Label Grid.Column="1"
+                       Text="{Binding RecipeName}"
+                       FontAttributes="Bold"
+                               FontSize="36"/>
+                        <Label Grid.Row="1"
+                       Grid.Column="1"
+                       Text="{Binding RecipeType}"
+                       FontAttributes="Italic"
+                       VerticalOptions="End" />
                     </Grid>
-                    <!--<RelativeLayout Padding="10" 
-                                    x:DataType="model:RecipeItem">
-                        <Label Text="{Binding RecipeName}" 
-                               LineBreakMode="NoWrap" 
-                               Style="{DynamicResource ListItemTextStyle}" 
-                               FontSize="16" />
-                        --><!--<Label Text="" FontFamily="FontAwesomeSolid" FontSize="20" HorizontalOptions="End" VerticalOptions="End" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=leave, Property=X, Constant=-40}" />--><!--
-                    </RelativeLayout>-->
                 </DataTemplate>
+
             </CollectionView.ItemTemplate>
         </CollectionView>
     </RefreshView>

@@ -12,8 +12,9 @@ namespace RecipeCookbook
         public App()
         {
             InitializeComponent();
-            MainPage = new RecipeOverview();
-         
+          //  MainPage = new RecipeOverview();
+            MainPage = new NavigationPage(new RecipeOverview());
+
         }
 
         protected override void OnStart()
