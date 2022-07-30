@@ -1,6 +1,7 @@
 ﻿using RecipeCookbook.Data;
 using RecipeCookbook.Models;
 using RecipeCookbook.Services;
+using RecipeCookbook.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,10 +19,13 @@ namespace RecipeCookbook.ViewModels
         public ObservableCollection<RecipeItem> RecipeItems { get; }
         public Command LoadRecipes { get; }
 
+        public Command GoToAddRecipeView { get; set; }
+
         public RecipeViewModel()
         {
             RecipeItems = new ObservableCollection<RecipeItem>();
             LoadRecipes = new Command(async () => await ExecuteLoadRecipes());
+            GoToAddRecipeView = new Command(OnGoToAddRecipeView);
         }
 
         public async Task ExecuteLoadRecipes()
@@ -52,6 +56,11 @@ namespace RecipeCookbook.ViewModels
         public void OnAppearing() //Intialize function called from view
         {
             IsBusy = true; //Trigger a ExecuteLoadItemsCommand command by setting to true
+        }
+
+        private static async void OnGoToAddRecipeView(object obj)
+        {
+            await Shell.Current.GoToAsync(nameof(AddRecipe)); //Open joins view
         }
 
     }

@@ -13,7 +13,7 @@ namespace RecipeCookbook
         {
             InitializeComponent();
           //  MainPage = new RecipeOverview();
-            MainPage = new NavigationPage(new RecipeOverview());
+            MainPage = new AppShell();
 
         }
 

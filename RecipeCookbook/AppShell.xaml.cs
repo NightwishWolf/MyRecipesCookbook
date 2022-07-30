@@ -19,6 +19,7 @@ namespace RecipeCookbook
       
 
               Routing.RegisterRoute(nameof(RecipeOverview), typeof(RecipeOverview));
+              Routing.RegisterRoute(nameof(AddRecipe), typeof(AddRecipe));
         }
     }
 }

@@ -2,20 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:local="clr-namespace:RecipeCookbook.ViewModels"
-             xmlns:model="clr-namespace:RecipeCookbook.Models"
+             xmlns:model="clr-namespace:RecipeCookbook.Models" 
              x:Class="RecipeCookbook.Views.RecipeOverview"
              x:Name="RecipesOverview"
              Title="Recipe overview">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="New"  />
-    </ContentPage.ToolbarItems>
-
     <RefreshView Padding="10" x:DataType="local:RecipeViewModel" 
                  Command="{Binding LoadRecipes}" 
                  IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <StackLayout Margin="20,35,20,20">
+            <!--<Button
+               Text="Add new recipe" Command="{Binding GoToAddRecipeView}">
+            </Button>-->
 
-        <CollectionView x:Name="ItemsListView" 
+            <Button 
+                Command="{Binding GoToAddRecipeView}" 
+                Text="Add recipe" 
+                />
+
+            <CollectionView x:Name="ItemsListView" 
                         ItemsSource="{Binding RecipeItems}" 
                         SelectionMode="None">
 
@@ -30,14 +35,11 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-
-
-
-                        <Image Grid.RowSpan="2"
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.RowSpan="2"
                        Source="{Binding ImageUrl}"
                        Aspect="AspectFill"
                        HeightRequest="100"
@@ -56,5 +58,6 @@
 
             </CollectionView.ItemTemplate>
         </CollectionView>
+        </StackLayout>
     </RefreshView>
 </ContentPage>

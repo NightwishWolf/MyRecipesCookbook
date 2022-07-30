@@ -28,4 +28,9 @@
         ContentTemplate="{DataTemplate local:RecipeOverview}"
         Route="RecipeOverview" />
 
+    <ShellContent
+        Title="ToAddRecipe"
+        ContentTemplate="{DataTemplate local:AddRecipe}"
+        Route="AddRecipe" />
+
 </Shell>
