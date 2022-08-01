@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace RecipeCookbook.Services
 {
@@ -68,6 +69,53 @@ namespace RecipeCookbook.Services
 
             return null;
 
+        }
+
+
+
+        public async Task<bool> GetSingleRecipe(int itemId)
+        {
+            //Call backend based on custom apiclient class
+            HttpResponseMessage response;
+            try
+            {
+                response = await client.GetAsync("/Recipes/" + itemId);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Fuck");
+            }
+
+            return false;
+        }
+
+        public async Task<RecipeItem> PostRecipe (RecipeItem recipeItem)
+        {
+            //Call backend based on custom apiclient class
+            HttpResponseMessage response;
+
+                //Make a JSON from the user object
+                var json = JsonConvert.SerializeObject(recipeItem);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                response = await client.PostAsync("/Recipes", content);
+                //If the post is not successfull a pop-up appears with an error
+                if (!response.IsSuccessStatusCode)
+                {
+                    _ = Application.Current.MainPage.DisplayAlert("Failed", "Something went wrong", "Okay");
+                }
+           
+
+            //If it was successfull the response is transformed again, a pop-up for success appears and the content is returned
+            var responseJson = await response.Content.ReadAsStringAsync();
+            var responseContent = JsonConvert.DeserializeObject<RecipeItem>(responseJson);
+            _ = Application.Current.MainPage.DisplayAlert("Succes!", "Recipe was added", "Okay");
+            return responseContent;
         }
     }
 }

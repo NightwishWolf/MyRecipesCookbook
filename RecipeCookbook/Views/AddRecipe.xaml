@@ -1,12 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RecipeCookbook.Views.AddRecipe">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:RecipeCookbook.ViewModels" 
+             xmlns:model="clr-namespace:RecipeCookbook.Models"
+             x:DataType="viewmodels:NewItemViewModel"
+             x:Class="RecipeCookbook.Views.AddRecipe"
+             Title="Add recipe">
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center" x:DataType="model:RecipeItem">
+            <Entry x:Name="RecipeName" Text="{Binding RecipeName}" Placeholder="Recipe name" />
+            <Entry x:Name="ImageUrl" Text="{Binding ImageUrl}" Placeholder="Paste your recipe image url here" />
+            <Editor x:Name="Ingredients" Text="{Binding Ingredients}" AutoSize="TextChanges" Placeholder="Add your ingredients here" />
+            <Editor x:Name="RecipeBody" Text="{Binding RecipeBody}" AutoSize="TextChanges" Placeholder="Directions go here" />
+            <Entry x:Name="Rating" Text="{Binding Rating}" Placeholder="Rating but is int" />
+            <!--<Entry x:Name="RecipeType" Text="{Binding RecipeType}" Placeholder="Type, can make dropdown?" />-->
+            <Picker x:Name="pickerType" Title="Type of food" SelectedItem="{Binding RecipeType}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Dinner</x:String>
+                        <x:String>Lunch</x:String>
+                        <x:String>Breakfast</x:String>
+                        <x:String>Baking</x:String>
+                        <x:String>Drinks</x:String>
+                        <x:String>Other</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Entry x:Name="RecipeTags" Text="{Binding RecipeTags}" Placeholder="Tags, can make dropdown?" />
+            
+           <Button x:DataType="viewmodels:NewItemViewModel" VerticalOptions="Center" Text="Save recipe" Command="{Binding SaveRecipe}"/> 
+            
         </StackLayout>
+ 
     </ContentPage.Content>
 </ContentPage>

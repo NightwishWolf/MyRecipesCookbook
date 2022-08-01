@@ -24,12 +24,12 @@
     </Shell.Resources>
 
     <ShellContent
-        Title="Home"
+        Title="Recipe overview"
         ContentTemplate="{DataTemplate local:RecipeOverview}"
         Route="RecipeOverview" />
 
     <ShellContent
-        Title="ToAddRecipe"
+        Title="Add Recipe"
         ContentTemplate="{DataTemplate local:AddRecipe}"
         Route="AddRecipe" />
 

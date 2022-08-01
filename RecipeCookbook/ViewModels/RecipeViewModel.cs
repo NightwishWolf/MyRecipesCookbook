@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -18,14 +19,16 @@ namespace RecipeCookbook.ViewModels
         readonly RecipeService _recipeService = new RecipeService();
         public ObservableCollection<RecipeItem> RecipeItems { get; }
         public Command LoadRecipes { get; }
-
         public Command GoToAddRecipeView { get; set; }
+
+        public Command<RecipeItem> ItemTapped { get; }
 
         public RecipeViewModel()
         {
             RecipeItems = new ObservableCollection<RecipeItem>();
             LoadRecipes = new Command(async () => await ExecuteLoadRecipes());
             GoToAddRecipeView = new Command(OnGoToAddRecipeView);
+            ItemTapped = new Command<RecipeItem>(OnItemSelected);
         }
 
         public async Task ExecuteLoadRecipes()
@@ -60,7 +63,16 @@ namespace RecipeCookbook.ViewModels
 
         private static async void OnGoToAddRecipeView(object obj)
         {
-            await Shell.Current.GoToAsync(nameof(AddRecipe)); //Open joins view
+            await Shell.Current.GoToAsync(nameof(AddRecipe)); //Open add recipe view
+        }
+
+        async void OnItemSelected(RecipeItem recipeItem)
+        {
+            if (recipeItem == null)
+                return;
+
+            // This will push the ItemDetailPage onto the navigation stack
+            await Shell.Current.GoToAsync($"{nameof(RecipeDetail)}?{nameof(ItemDetailViewModel.ItemId)}={recipeItem.RecipeId}");
         }
 
     }

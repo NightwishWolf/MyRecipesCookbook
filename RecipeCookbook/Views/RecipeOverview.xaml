@@ -11,9 +11,6 @@
                  Command="{Binding LoadRecipes}" 
                  IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <StackLayout Margin="20,35,20,20">
-            <!--<Button
-               Text="Add new recipe" Command="{Binding GoToAddRecipeView}">
-            </Button>-->
 
             <Button 
                 Command="{Binding GoToAddRecipeView}" 
@@ -21,12 +18,12 @@
                 />
 
             <CollectionView x:Name="ItemsListView" 
-                        ItemsSource="{Binding RecipeItems}" 
-                        SelectionMode="None">
+                        ItemsSource="{Binding RecipeItems}">
 
+                <!--SelectionMode="Single" 
+                        SelectionChanged="OnCollectionViewSelectionChanged">-->
 
             <CollectionView.ItemTemplate>
-
 
                 <DataTemplate x:DataType="model:RecipeItem">
 
@@ -39,6 +36,9 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RecipeOverview_Tapped" NumberOfTapsRequired="1"  />
+                            </Grid.GestureRecognizers>
                             <Image Grid.RowSpan="2"
                        Source="{Binding ImageUrl}"
                        Aspect="AspectFill"
@@ -48,12 +48,13 @@
                        Text="{Binding RecipeName}"
                        FontAttributes="Bold"
                                FontSize="36"/>
-                        <Label Grid.Row="1"
+                            <Label Grid.Row="1"
                        Grid.Column="1"
                        Text="{Binding RecipeType}"
                        FontAttributes="Italic"
                        VerticalOptions="End" />
-                    </Grid>
+
+                        </Grid>
                 </DataTemplate>
 
             </CollectionView.ItemTemplate>

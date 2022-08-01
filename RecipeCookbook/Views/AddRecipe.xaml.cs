@@ -13,11 +13,11 @@ namespace RecipeCookbook.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddRecipe : ContentPage
     {
-        RecipeViewModel _recipeViewModel;
+        NewItemViewModel _newItemViewModel;
         public AddRecipe()
         {
             InitializeComponent();
-            BindingContext = _recipeViewModel = new RecipeViewModel();
+            BindingContext = _newItemViewModel = new NewItemViewModel();
         }
     }
 }
