@@ -647,3 +647,8 @@ C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\
 C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Runtime.Extensions.dll
 C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Runtime.InteropServices.dll
 C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.Threading.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\CommunityToolkit.Mvvm.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\CommunityToolkit.Mvvm.pdb
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.ComponentModel.Annotations.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.ComponentModel.DataAnnotations.dll
+C:\Users\Gebruiker\source\repos\RecipeCookbook\RecipeCookbook.Android\obj\Debug\120\android\assets\System.ComponentModel.DataAnnotations.pdb

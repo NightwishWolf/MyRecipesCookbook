@@ -6,10 +6,12 @@ using System.Text;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using RecipeCookbook.Views;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace RecipeCookbook.ViewModels
 {
-    public class NewItemViewModel : BaseViewModel
+    public partial class NewItemViewModel : BaseViewModel
     {
         private string _recipeName;
         private string _imageUrl;
@@ -27,24 +29,36 @@ namespace RecipeCookbook.ViewModels
         public string RecipeType { get => _recipeType; set => SetProperty(ref _recipeType, value); }
         public string RecipeTags { get => _recipeTags; set => SetProperty(ref _recipeTags, value); }
 
+        
+        RecipeItem newRecipeItem = new();
+
         private readonly RecipeService recipeService;
-        public Command SaveRecipe { get; set; }
+        public Command SaveRecipe { get; }
+
+        public Command TestComm { get; }
 
         public NewItemViewModel(RecipeService recipeService)
         {
             this.recipeService = recipeService;
 
             SaveRecipe = new Command(OnSaveRecipe);
+            TestComm = new Command(TestCommand);
         }
 
         public NewItemViewModel()
         {
         }
 
+        private static async void TestCommand(object obj)
+        {
+            await Shell.Current.GoToAsync(nameof(RecipeOverview)); //Open add recipe view
+        }
+
+        [ICommand]
         private async void OnSaveRecipe(object obj)
         {
             var newRecipe = new RecipeItem();
-            {
+
                 // Any of the input fields are empty
                 if (string.IsNullOrWhiteSpace(RecipeName) ||
                         string.IsNullOrWhiteSpace(Ingredients) ||
@@ -64,10 +78,8 @@ namespace RecipeCookbook.ViewModels
                 newRecipe.RecipeTags = RecipeTags;
                 var responseContent = await recipeService.PostRecipe(newRecipe);
 
-                await Shell.Current.GoToAsync(nameof(RecipeOverview));
+              await Shell.Current.GoToAsync(nameof(RecipeOverview));
             IsBusy = false;
         }
-
-    }
     }
 }

@@ -42,6 +42,10 @@
       "frameworks": {
         "monoandroid12.0": {
           "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
@@ -104,6 +108,10 @@
               "target": "Package",
               "version": "[6.4.0, )"
             },
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
@@ -113,6 +121,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "System.ObjectModel": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             },
             "System.Text.Json": {
               "target": "Package",

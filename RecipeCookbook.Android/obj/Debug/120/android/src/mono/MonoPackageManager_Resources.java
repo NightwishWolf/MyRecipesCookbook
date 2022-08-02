@@ -4,6 +4,7 @@ public class MonoPackageManager_Resources {
 		/* We need to ensure that "RecipeCookbook.Android.dll" comes first in this list. */
 		"RecipeCookbook.Android.dll",
 		"Autofac.dll",
+		"CommunityToolkit.Mvvm.dll",
 		"FormsViewGroup.dll",
 		"Microsoft.Bcl.AsyncInterfaces.dll",
 		"Newtonsoft.Json.dll",

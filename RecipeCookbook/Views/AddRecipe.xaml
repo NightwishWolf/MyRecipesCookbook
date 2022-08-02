@@ -8,7 +8,12 @@
              Title="Add recipe">
 
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center" x:DataType="model:RecipeItem">
+
+        <StackLayout x:DataType="viewmodels:NewItemViewModel">
+
+            <Button  VerticalOptions="Center" Text="Save recipe" Command="{Binding TestComm}"/>
+
+            <StackLayout Padding="10,0,10,0" VerticalOptions="Center" x:DataType="model:RecipeItem">
             <Entry x:Name="RecipeName" Text="{Binding RecipeName}" Placeholder="Recipe name" />
             <Entry x:Name="ImageUrl" Text="{Binding ImageUrl}" Placeholder="Paste your recipe image url here" />
             <Editor x:Name="Ingredients" Text="{Binding Ingredients}" AutoSize="TextChanges" Placeholder="Add your ingredients here" />
@@ -29,10 +34,15 @@
             </Picker>
 
             <Entry x:Name="RecipeTags" Text="{Binding RecipeTags}" Placeholder="Tags, can make dropdown?" />
+
+                <!--<Button x:DataType="viewmodels:NewItemViewModel" VerticalOptions="Center" Text="Save recipe" 
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:NewItemViewModel}}, Path=TestComm}"/>-->
+
             
-           <Button x:DataType="viewmodels:NewItemViewModel" VerticalOptions="Center" Text="Save recipe" Command="{Binding SaveRecipe}"/> 
-            
+
         </StackLayout>
- 
+
+        </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
