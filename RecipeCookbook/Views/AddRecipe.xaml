@@ -11,9 +11,9 @@
 
         <StackLayout x:DataType="viewmodels:NewItemViewModel">
 
-            <Button  VerticalOptions="Center" Text="Save recipe" Command="{Binding TestComm}"/>
+            <Button  VerticalOptions="Center" Text="Save recipe" Command="{Binding SaveRecipe}"/>
 
-            <StackLayout Padding="10,0,10,0" VerticalOptions="Center" x:DataType="model:RecipeItem">
+            <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Entry x:Name="RecipeName" Text="{Binding RecipeName}" Placeholder="Recipe name" />
             <Entry x:Name="ImageUrl" Text="{Binding ImageUrl}" Placeholder="Paste your recipe image url here" />
             <Editor x:Name="Ingredients" Text="{Binding Ingredients}" AutoSize="TextChanges" Placeholder="Add your ingredients here" />

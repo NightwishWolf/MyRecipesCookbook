@@ -37,21 +37,17 @@ namespace RecipeCookbook.ViewModels
 
         public Command TestComm { get; }
 
-        public NewItemViewModel(RecipeService recipeService)
+        public NewItemViewModel()
         {
-            this.recipeService = recipeService;
+            this.recipeService = DependencyService.Resolve<RecipeService>();
 
             SaveRecipe = new Command(OnSaveRecipe);
             TestComm = new Command(TestCommand);
         }
 
-        public NewItemViewModel()
+        private static async void TestCommand()
         {
-        }
-
-        private static async void TestCommand(object obj)
-        {
-            await Shell.Current.GoToAsync(nameof(RecipeOverview)); //Open add recipe view
+            await Shell.Current.GoToAsync("//RecipeOverview"); //Open add recipe view
         }
 
         [ICommand]
@@ -78,7 +74,7 @@ namespace RecipeCookbook.ViewModels
                 newRecipe.RecipeTags = RecipeTags;
                 var responseContent = await recipeService.PostRecipe(newRecipe);
 
-              await Shell.Current.GoToAsync(nameof(RecipeOverview));
+              await Shell.Current.GoToAsync("//RecipeOverview");
             IsBusy = false;
         }
     }
