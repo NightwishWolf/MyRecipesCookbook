@@ -53,3 +53,8 @@ dkms.conf
 
 *.bin
 *.obj
+
+**/obj
+**/.vs
+**/bin
+*.cache
