@@ -29,7 +29,7 @@ namespace RecipeCookbook.ViewModels
         public string RecipeType { get => _recipeType; set => SetProperty(ref _recipeType, value); }
         public string RecipeTags { get => _recipeTags; set => SetProperty(ref _recipeTags, value); }
 
-        
+
         RecipeItem newRecipeItem = new();
 
         private readonly RecipeService recipeService;
@@ -37,21 +37,17 @@ namespace RecipeCookbook.ViewModels
 
         public Command TestComm { get; }
 
-        public NewItemViewModel(RecipeService recipeService)
+        public NewItemViewModel()
         {
-            this.recipeService = recipeService;
+            this.recipeService = DependencyService.Resolve<RecipeService>();
 
             SaveRecipe = new Command(OnSaveRecipe);
             TestComm = new Command(TestCommand);
         }
 
-        public NewItemViewModel()
+        private static async void TestCommand()
         {
-        }
-
-        private static async void TestCommand(object obj)
-        {
-            await Shell.Current.GoToAsync(nameof(RecipeOverview)); //Open add recipe view
+            await Shell.Current.GoToAsync("//RecipeOverview"); //Open add recipe view
         }
 
         [ICommand]
@@ -59,26 +55,26 @@ namespace RecipeCookbook.ViewModels
         {
             var newRecipe = new RecipeItem();
 
-                // Any of the input fields are empty
-                if (string.IsNullOrWhiteSpace(RecipeName) ||
-                        string.IsNullOrWhiteSpace(Ingredients) ||
-                        string.IsNullOrWhiteSpace(RecipeBody)
-                            )
-                {
-                    await App.Current.MainPage.DisplayAlert("Adding new recipe failed", "You didn't fill in everything properly", "Okay");
-                    return;
-                }
-                IsBusy = true;
-                newRecipe.RecipeName = RecipeName;
-                newRecipe.ImageUrl = ImageUrl;
-                newRecipe.Ingredients = Ingredients;
-                newRecipe.RecipeBody = RecipeBody;
-                newRecipe.Rating = Rating;
-                newRecipe.RecipeType = RecipeType;
-                newRecipe.RecipeTags = RecipeTags;
-                var responseContent = await recipeService.PostRecipe(newRecipe);
+            // Any of the input fields are empty
+            if (string.IsNullOrWhiteSpace(RecipeName) ||
+                    string.IsNullOrWhiteSpace(Ingredients) ||
+                    string.IsNullOrWhiteSpace(RecipeBody)
+                        )
+            {
+                await App.Current.MainPage.DisplayAlert("Adding new recipe failed", "You didn't fill in everything properly", "Okay");
+                return;
+            }
+            IsBusy = true;
+            newRecipe.RecipeName = RecipeName;
+            newRecipe.ImageUrl = ImageUrl;
+            newRecipe.Ingredients = Ingredients;
+            newRecipe.RecipeBody = RecipeBody;
+            newRecipe.Rating = Rating;
+            newRecipe.RecipeType = RecipeType;
+            newRecipe.RecipeTags = RecipeTags;
+            var responseContent = await recipeService.PostRecipe(newRecipe);
 
-              await Shell.Current.GoToAsync(nameof(RecipeOverview));
+            await Shell.Current.GoToAsync("//RecipeOverview");
             IsBusy = false;
         }
     }

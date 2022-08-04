@@ -16,17 +16,17 @@ namespace RecipeCookbook.Views
     public partial class RecipeDetail : ContentPage
     {
 
-        RecipeViewModel _recipeViewModel;
+        ItemDetailViewModel _itemDetailViewModel;
         public RecipeDetail()
         {
             InitializeComponent();
-            BindingContext = _recipeViewModel = new RecipeViewModel();
+            BindingContext = _itemDetailViewModel = new ItemDetailViewModel();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _recipeViewModel.OnAppearing();
+            _itemDetailViewModel.OnAppearing();
         }
     }
 }

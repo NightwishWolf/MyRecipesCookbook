@@ -9,38 +9,38 @@
 
     <ContentPage.Content>
 
-        <StackLayout x:DataType="viewmodels:NewItemViewModel">
+      
 
-            <Button  VerticalOptions="Center" Text="Save recipe" Command="{Binding TestComm}"/>
+            <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+                <Entry x:Name="RecipeName" Text="{Binding RecipeName}" Placeholder="Recipe name" />
+                <Entry x:Name="ImageUrl" Text="{Binding ImageUrl}" Placeholder="Paste your recipe image url here" />
+                <Editor x:Name="Ingredients" Text="{Binding Ingredients}" AutoSize="TextChanges" Placeholder="Add your ingredients here" />
+                <Editor x:Name="RecipeBody" Text="{Binding RecipeBody}" AutoSize="TextChanges" Placeholder="Directions go here" />
+                <Entry x:Name="Rating" Text="{Binding Rating}" Placeholder="Rating but is int" />
+                <!--<Entry x:Name="RecipeType" Text="{Binding RecipeType}" Placeholder="Type, can make dropdown?" />-->
+                <Picker x:Name="pickerType" Title="Type of food" SelectedItem="{Binding RecipeType}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Dinner</x:String>
+                            <x:String>Lunch</x:String>
+                            <x:String>Breakfast</x:String>
+                            <x:String>Baking</x:String>
+                            <x:String>Drinks</x:String>
+                            <x:String>Other</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
 
-            <StackLayout Padding="10,0,10,0" VerticalOptions="Center" x:DataType="model:RecipeItem">
-            <Entry x:Name="RecipeName" Text="{Binding RecipeName}" Placeholder="Recipe name" />
-            <Entry x:Name="ImageUrl" Text="{Binding ImageUrl}" Placeholder="Paste your recipe image url here" />
-            <Editor x:Name="Ingredients" Text="{Binding Ingredients}" AutoSize="TextChanges" Placeholder="Add your ingredients here" />
-            <Editor x:Name="RecipeBody" Text="{Binding RecipeBody}" AutoSize="TextChanges" Placeholder="Directions go here" />
-            <Entry x:Name="Rating" Text="{Binding Rating}" Placeholder="Rating but is int" />
-            <!--<Entry x:Name="RecipeType" Text="{Binding RecipeType}" Placeholder="Type, can make dropdown?" />-->
-            <Picker x:Name="pickerType" Title="Type of food" SelectedItem="{Binding RecipeType}">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Dinner</x:String>
-                        <x:String>Lunch</x:String>
-                        <x:String>Breakfast</x:String>
-                        <x:String>Baking</x:String>
-                        <x:String>Drinks</x:String>
-                        <x:String>Other</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
-
-            <Entry x:Name="RecipeTags" Text="{Binding RecipeTags}" Placeholder="Tags, can make dropdown?" />
+                <Entry x:Name="RecipeTags" Text="{Binding RecipeTags}" Placeholder="Tags, can make dropdown?" />
 
                 <!--<Button x:DataType="viewmodels:NewItemViewModel" VerticalOptions="Center" Text="Save recipe" 
                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:NewItemViewModel}}, Path=TestComm}"/>-->
+  <StackLayout x:DataType="viewmodels:NewItemViewModel">
 
-            
+            <Button  VerticalOptions="Center" Text="Save recipe" Command="{Binding SaveRecipe}"/>
 
-        </StackLayout>
+
+            </StackLayout>
 
         </StackLayout>
 

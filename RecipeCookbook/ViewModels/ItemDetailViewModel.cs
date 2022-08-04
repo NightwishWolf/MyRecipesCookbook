@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Web;
+using Xamarin.Forms;
 
 namespace RecipeCookbook.ViewModels
 {
-    public class ItemDetailViewModel : BaseViewModel
+    public class ItemDetailViewModel : BaseViewModel, IQueryAttributable
     {
         readonly RecipeService _recipeService = new RecipeService();
 
@@ -42,6 +44,11 @@ namespace RecipeCookbook.ViewModels
                 _itemId = value;
                 LoadItemId(value);
             }
+        }
+
+        public void ApplyQueryAttributes(IDictionary<string, string> query)
+        {
+            ItemId = Int32.Parse(HttpUtility.UrlDecode(query["ItemId"]));
         }
 
         public string RecipeName
