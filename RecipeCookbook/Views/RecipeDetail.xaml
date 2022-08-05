@@ -7,14 +7,32 @@
              x:Class="RecipeCookbook.Views.RecipeDetail"
              Title="Recipe details">
     <ContentPage.Content>
-        
-        <ScrollView>
-            <StackLayout Margin="20">
-                <Label Text="{Binding recipeItem.RecipeName}" 
-                   HorizontalOptions="Center" 
-                   Style="{DynamicResource TitleStyle}" />
-            </StackLayout>
-        </ScrollView>
 
-</ContentPage.Content>
+        <Grid Margin="15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="7*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="0" Grid.Row="0" Margin="0,0,0,0">
+                <Image Source="{Binding recipeItem.ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" 
+                       HorizontalOptions="Fill"   />
+
+            </Grid>
+
+            <ScrollView Grid.Row="1">
+                <StackLayout Margin="20" HorizontalOptions="Center" >
+                    <Label Text="{Binding recipeItem.RecipeName}" Style="{DynamicResource TitleStyle}" FontAttributes="Bold"/>
+                    <Label Text="{Binding recipeItem.Rating, StringFormat='Rating: {0:N0}'}" />
+                    <Label Text="Ingredients:" FontAttributes="Bold"/>
+                    <Label Text="{Binding recipeItem.Ingredients}" />
+                    <Label Text="Steps:" FontAttributes="Bold"/>
+                    <Label Text="{Binding recipeItem.RecipeBody}" />
+                    <Label Text="{Binding recipeItem.RecipeTags, StringFormat='Tagged with: {0:RecipeTags} '}" />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>
