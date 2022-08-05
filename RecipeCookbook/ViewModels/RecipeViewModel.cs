@@ -20,15 +20,15 @@ namespace RecipeCookbook.ViewModels
         public ObservableCollection<RecipeItem> RecipeItems { get; }
         public Command LoadRecipes { get; }
         public Command GoToAddRecipeView { get; set; }
-
-        public Command<RecipeItem> ItemTapped { get; }
-
+        
+        public RecipeItem _selectedItem;
+        public Command<RecipeItem> ItemTapped { get; }  
         public RecipeViewModel()
         {
             RecipeItems = new ObservableCollection<RecipeItem>();
             LoadRecipes = new Command(async () => await ExecuteLoadRecipes());
             GoToAddRecipeView = new Command(OnGoToAddRecipeView);
-            ItemTapped = new Command<RecipeItem>(OnItemSelected);
+            ItemTapped = new Command<RecipeItem>(async(recipe) => await OnItemSelected(recipe)); ;
         }
 
         public async Task ExecuteLoadRecipes()
@@ -65,14 +65,13 @@ namespace RecipeCookbook.ViewModels
         {
             await Shell.Current.GoToAsync(nameof(AddRecipe)); //Open add recipe view
         }
-
-        async void OnItemSelected(RecipeItem recipeItem)
+        private async Task OnItemSelected(RecipeItem recipeItem)
         {
             if (recipeItem == null)
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(RecipeDetail)}?{nameof(ItemDetailViewModel.ItemId)}={recipeItem.RecipeId}");
+            await Shell.Current.GoToAsync($"{nameof(RecipeDetail)}?ItemId={recipeItem.RecipeId}");
         }
 
     }

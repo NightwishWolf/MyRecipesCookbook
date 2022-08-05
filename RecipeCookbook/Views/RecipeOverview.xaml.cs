@@ -36,12 +36,5 @@ namespace RecipeCookbook.Views
         //    int recipeId = (e.CurrentSelection.FirstOrDefault() as RecipeItem).RecipeId;
         //    await Shell.Current.GoToAsync($"recipedetails?RecipeId={recipeId}"); ;
         //}
-
-        private void RecipeOverview_Tapped(object sender, System.EventArgs e)
-        {
-            BindableObject bo = sender as BindableObject;
-            _recipeViewModel.ItemTapped.Execute(bo.BindingContext);
-
-        }
     }
 }

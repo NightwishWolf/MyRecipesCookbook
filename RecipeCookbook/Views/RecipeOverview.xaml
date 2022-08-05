@@ -37,7 +37,7 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="RecipeOverview_Tapped" NumberOfTapsRequired="1"  />
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:RecipeViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}" />
                             </Grid.GestureRecognizers>
                             <Image Grid.RowSpan="2"
                        Source="{Binding ImageUrl}"

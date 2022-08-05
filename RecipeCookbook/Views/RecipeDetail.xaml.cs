@@ -15,18 +15,10 @@ namespace RecipeCookbook.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RecipeDetail : ContentPage
     {
-
-        ItemDetailViewModel _itemDetailViewModel;
         public RecipeDetail()
         {
             InitializeComponent();
-            BindingContext = _itemDetailViewModel = new ItemDetailViewModel();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            _itemDetailViewModel.OnAppearing();
+            this.BindingContext = new ItemDetailViewModel();
         }
     }
 }

@@ -73,7 +73,7 @@ namespace RecipeCookbook.Services
 
 
 
-        public async Task<bool> GetSingleRecipe(int itemId)
+        public async Task<RecipeItem> GetSingleRecipe(int itemId)
         {
             //Call backend based on custom apiclient class
             HttpResponseMessage response;
@@ -83,15 +83,17 @@ namespace RecipeCookbook.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return true;
+                    //Read content as normal string
+                    var content = await response.Content.ReadAsStringAsync();
+                    //Because the response are teams in json format, convert those to actual team objects
+                    return JsonConvert.DeserializeObject<RecipeItem>(content);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine("Fuck");
             }
-
-            return false;
+            return null;
         }
 
         public async Task<RecipeItem> PostRecipe (RecipeItem recipeItem)
