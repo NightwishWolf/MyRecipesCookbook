@@ -19,14 +19,8 @@ namespace RecipeCookbook.ViewModels
     {
         readonly RecipeService _recipeService = new RecipeService();
 
-        public Command GoEditRecipe { get; set; }
-
-        public Command<RecipeItem> EditThisRecipe { get; }
-
         public ItemDetailViewModel()
         {
-            GoEditRecipe = new Command(GoToEditRecipeView);
-            EditThisRecipe = new Command<RecipeItem>(async (recipe) => await OnEditThisRecipe(recipe));
         }
 
         private RecipeItem _recipeItem;
@@ -74,20 +68,6 @@ namespace RecipeCookbook.ViewModels
             {
                 Debug.WriteLine("Failed to Load Item");
             }
-        }
-
-        private static async void GoToEditRecipeView(object obj)
-        {
-            await Shell.Current.GoToAsync(nameof(EditRecipe)); //Open add recipe view
-        }
-
-        private async Task OnEditThisRecipe(RecipeItem recipeItem)
-        {
-            if (recipeItem == null)
-                return;
-
-            // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(EditRecipe)}?ItemId={recipeItem.RecipeId}");
         }
 
     }

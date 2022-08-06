@@ -40,6 +40,7 @@ namespace RecipeCookbook.ViewModels
             this.recipeService = DependencyService.Resolve<RecipeService>();
 
             SaveRecipe = new Command(OnSaveRecipe);
+         
         }
 
         [ICommand]

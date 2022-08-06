@@ -7,13 +7,41 @@
              x:Class="RecipeCookbook.Views.EditRecipe">
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Entry x:Name="RecipeName" Text="{Binding Name}" Placeholder="Recipe name" />
-  
+            <Entry x:Name="RecipeName" Text="{Binding Name}"  />
+            <Entry x:Name="ImageUrl" Text="{Binding ImageUrl}"  />
+            <Editor x:Name="Ingredients" Text="{Binding Ingredients}"  />
+            <Editor x:Name="RecipeBody" Text="{Binding RecipeBody}"  />
+            <Entry x:Name="Rating" Text="{Binding Rating}"  />
+            <Picker x:Name="pickerType" Title="{Binding RecipeType}" SelectedItem="{Binding RecipeType}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Dinner</x:String>
+                        <x:String>Lunch</x:String>
+                        <x:String>Breakfast</x:String>
+                        <x:String>Baking</x:String>
+                        <x:String>Drinks</x:String>
+                        <x:String>Other</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
 
-            <StackLayout x:DataType="viewmodels:EditRecipeViewModel">
+            <Picker x:Name="pickerTags" Title="{Binding RecipeTags}" SelectedItem="{Binding RecipeTags}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Oven dish</x:String>
+                        <x:String>Quick and easy</x:String>
+                        <x:String>Kid friendly</x:String>
+                        <x:String>Vegan</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
 
-                <Button  VerticalOptions="Center" Text="Save recipe"/>
 
+            <StackLayout>
+
+                <Button  VerticalOptions="Center" Text="Save recipe" 
+                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:EditRecipeViewModel}}, Path=SaveRecipe}" 
+                         CommandParameter="{Binding .}"/>
 
             </StackLayout>
 

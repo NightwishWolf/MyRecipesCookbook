@@ -34,13 +34,6 @@
                         <Label Text="{Binding recipeItem.RecipeBody}" />
                         <Label Text="{Binding recipeItem.RecipeTags, StringFormat='Tagged with: {0:RecipeTags} '}" /> 
                         
-                        <Button 
-                Text="Edit" Command="{Binding GoEditRecipe}">
-            </Button>   
-                        
-                        <Button 
-                Text="Delete" Command="{Binding EditThisRecipe}">
-            </Button>
                     </StackLayout>
                 </ScrollView>
         </Grid>

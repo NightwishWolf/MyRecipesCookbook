@@ -36,6 +36,7 @@
                         <x:String>Oven dish</x:String>
                         <x:String>Quick and easy</x:String>
                         <x:String>Kid friendly</x:String>
+                        <x:String>Vegan</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>

@@ -12,14 +12,21 @@ namespace RecipeCookbook.ViewModels
 {
     public partial class EditRecipeViewModel : BaseViewModel, IQueryAttributable
     {
-        //  private readonly RecipeService recipeService;
         readonly RecipeService _recipeService = new RecipeService();
+        public Command SaveRecipe { get; }
 
         private string name;
+        private string url;
+        private string ingredients;
+        private string body;
+        private int rating;
+        private string type;
+        private string tags;
 
         public EditRecipeViewModel()
         {
-          //  this.recipeService = DependencyService.Resolve<RecipeService>();
+         
+            SaveRecipe = new Command(async () => await OnSaveRecipe());
         }
 
         private RecipeItem _recipeItem;
@@ -44,12 +51,10 @@ namespace RecipeCookbook.ViewModels
             }
             set
             {
-
                 _itemId = value;
                 LoadItem(value);
             }
         }
-
         public string Name
         {
             get => name;
@@ -59,6 +64,25 @@ namespace RecipeCookbook.ViewModels
                 OnPropertyChanged(nameof(Name));
             }
         }
+        public string ImageUrl
+        {
+            get => url;
+            set
+            {
+                url = value;
+                OnPropertyChanged(nameof(ImageUrl));
+            }
+        }
+        public string Ingredients
+        { get => ingredients; set { ingredients = value; OnPropertyChanged(nameof(Ingredients)); } }
+        public string RecipeBody
+        { get => body; set { body = value; OnPropertyChanged(nameof(RecipeBody)); } }
+        public int Rating
+        { get => rating; set { rating = value; OnPropertyChanged(nameof(Rating)); } }
+        public string RecipeType
+        { get => type; set { type = value; OnPropertyChanged(nameof(RecipeType)); } }
+        public string RecipeTags
+        { get => tags; set { tags = value; OnPropertyChanged(nameof(RecipeTags)); } }
 
         public void ApplyQueryAttributes(IDictionary<string, string> query)
         {
@@ -70,17 +94,47 @@ namespace RecipeCookbook.ViewModels
             try
             {
                 recipeItem = await _recipeService.GetSingleRecipe(itemId);
-                //if(itemId != null)
-                //{
-                //    Name = recipeItem.RecipeName;
-                //}
-
-
+                if (itemId != null)
+                {
+                    Name = recipeItem.RecipeName;
+                    ImageUrl = recipeItem.ImageUrl;
+                    Ingredients = recipeItem.Ingredients;
+                    RecipeBody = recipeItem.RecipeBody;
+                    Rating = recipeItem.Rating;
+                    RecipeType = recipeItem.RecipeType;
+                    RecipeTags = recipeItem.RecipeTags;
+                }
             }
 
             catch (Exception)
             {
                 Debug.WriteLine("Failed to Load Item");
+            }
+        }
+
+        private async Task OnSaveRecipe()
+        {
+            try
+            {
+                var recipe = new RecipeItem
+                {
+                    RecipeId = ItemId,
+                    RecipeName = Name,
+                    ImageUrl = ImageUrl,
+                    Ingredients = Ingredients,
+                    RecipeBody = RecipeBody,
+                    Rating = Rating,
+                    RecipeType = RecipeType,
+                    RecipeTags = RecipeTags
+                };
+
+                await _recipeService.EditRecipe(recipe);
+
+                await Shell.Current.GoToAsync("..");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
