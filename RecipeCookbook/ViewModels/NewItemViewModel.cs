@@ -35,19 +35,11 @@ namespace RecipeCookbook.ViewModels
         private readonly RecipeService recipeService;
         public Command SaveRecipe { get; }
 
-        public Command TestComm { get; }
-
         public NewItemViewModel()
         {
             this.recipeService = DependencyService.Resolve<RecipeService>();
 
             SaveRecipe = new Command(OnSaveRecipe);
-            TestComm = new Command(TestCommand);
-        }
-
-        private static async void TestCommand()
-        {
-            await Shell.Current.GoToAsync("//RecipeOverview"); //Open add recipe view
         }
 
         [ICommand]

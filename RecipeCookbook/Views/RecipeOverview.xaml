@@ -20,42 +20,51 @@
             <CollectionView x:Name="ItemsListView" 
                         ItemsSource="{Binding RecipeItems}">
 
-                <!--SelectionMode="Single" 
-                        SelectionChanged="OnCollectionViewSelectionChanged">-->
-
-            <CollectionView.ItemTemplate>
+                <CollectionView.ItemTemplate>
 
                 <DataTemplate x:DataType="model:RecipeItem">
 
-                    <Grid Padding="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:RecipeViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}" />
-                            </Grid.GestureRecognizers>
-                            <Image Grid.RowSpan="2"
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Delete"
+                                       BackgroundColor="Red"
+                                       Command="{Binding Source={RelativeSource AncestorType={x:Type local:RecipeViewModel}}, 
+                                        Path=DeleteRecipe}" CommandParameter="{Binding .}"
+                                      />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:RecipeViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}" />
+                                </Grid.GestureRecognizers>
+                                <Image Grid.RowSpan="2"
                        Source="{Binding ImageUrl}"
                        Aspect="AspectFill"
                        HeightRequest="100"
                        WidthRequest="100" />
-                        <Label Grid.Column="1"
+                                <Label Grid.Column="1"
                        Text="{Binding RecipeName}"
                        FontAttributes="Bold"
                                FontSize="36"/>
-                            <Label Grid.Row="1"
+                                <Label Grid.Row="1"
                        Grid.Column="1"
                        Text="{Binding RecipeType}"
                        FontAttributes="Italic"
                        VerticalOptions="End" />
 
-                        </Grid>
-                </DataTemplate>
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
 
             </CollectionView.ItemTemplate>
         </CollectionView>

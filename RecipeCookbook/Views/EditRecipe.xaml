@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:RecipeCookbook.ViewModels"
+             x:DataType="viewmodels:EditRecipeViewModel"
+             xmlns:model="clr-namespace:RecipeCookbook.Models"
+             x:Class="RecipeCookbook.Views.EditRecipe">
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Entry x:Name="RecipeName" Text="{Binding Name}" Placeholder="Recipe name" />
+  
+
+            <StackLayout x:DataType="viewmodels:EditRecipeViewModel">
+
+                <Button  VerticalOptions="Center" Text="Save recipe"/>
+
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -16,9 +16,8 @@
                 <Entry x:Name="ImageUrl" Text="{Binding ImageUrl}" Placeholder="Paste your recipe image url here" />
                 <Editor x:Name="Ingredients" Text="{Binding Ingredients}" AutoSize="TextChanges" Placeholder="Add your ingredients here" />
                 <Editor x:Name="RecipeBody" Text="{Binding RecipeBody}" AutoSize="TextChanges" Placeholder="Directions go here" />
-                <Entry x:Name="Rating" Text="{Binding Rating}" Placeholder="Rating but is int" />
-                <!--<Entry x:Name="RecipeType" Text="{Binding RecipeType}" Placeholder="Type, can make dropdown?" />-->
-                <Picker x:Name="pickerType" Title="Type of food" SelectedItem="{Binding RecipeType}">
+            <Entry x:Name="Rating" Text="{Binding Rating}" Placeholder="Rating" />
+            <Picker x:Name="pickerType" Title="Type of food" SelectedItem="{Binding RecipeType}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Dinner</x:String>
@@ -31,11 +30,17 @@
                     </Picker.ItemsSource>
                 </Picker>
 
-                <Entry x:Name="RecipeTags" Text="{Binding RecipeTags}" Placeholder="Tags, can make dropdown?" />
+            <Picker x:Name="pickerTags" Title="Tags" SelectedItem="{Binding RecipeTags}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Oven dish</x:String>
+                        <x:String>Quick and easy</x:String>
+                        <x:String>Kid friendly</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
 
-                <!--<Button x:DataType="viewmodels:NewItemViewModel" VerticalOptions="Center" Text="Save recipe" 
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:NewItemViewModel}}, Path=TestComm}"/>-->
-  <StackLayout x:DataType="viewmodels:NewItemViewModel">
+            <StackLayout x:DataType="viewmodels:NewItemViewModel">
 
             <Button  VerticalOptions="Center" Text="Save recipe" Command="{Binding SaveRecipe}"/>
 

@@ -119,5 +119,36 @@ namespace RecipeCookbook.Services
             _ = Application.Current.MainPage.DisplayAlert("Succes!", "Recipe was added", "Okay");
             return responseContent;
         }
+
+        public async Task<RecipeItem> EditRecipe(RecipeItem recipeItem)
+        {
+            //Call backend based on custom apiclient class
+            HttpResponseMessage response;
+
+            //Make a JSON from the user object
+            var json = JsonConvert.SerializeObject(recipeItem);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            response = await client.PutAsync($"Recipes/{recipeItem.RecipeId}", content);
+            //If the post is not successfull a pop-up appears with an error
+            if (!response.IsSuccessStatusCode)
+            {
+                _ = Application.Current.MainPage.DisplayAlert("Failed", "Something went wrong", "Okay");
+            }
+
+
+            //If it was successfull the response is transformed again, a pop-up for success appears and the content is returned
+            var responseJson = await response.Content.ReadAsStringAsync();
+            var responseContent = JsonConvert.DeserializeObject<RecipeItem>(responseJson);
+            _ = Application.Current.MainPage.DisplayAlert("Succes!", "Recipe was edited", "Okay");
+            return responseContent;
+        }
+
+        public async Task DeleteRecipe(RecipeItem recipeItem)
+        {
+            var response = await client.DeleteAsync($"Recipes/{recipeItem.RecipeId}");
+
+            response.EnsureSuccessStatusCode();
+        }
     }
 }
