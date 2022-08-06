@@ -79,9 +79,16 @@ namespace RecipeCookbook.ViewModels
 
         private async Task OnDeleteRecipe(RecipeItem recipe)
         {
-            await _recipeService.DeleteRecipe(recipe);
 
-            ExecuteLoadRecipes();
+            string result = await Application.Current.MainPage.DisplayActionSheet
+                ("Are you sure you want to delete this recipe?", "Cancel", "Yes");
+
+            if (result == "Yes")
+            {
+                await _recipeService.DeleteRecipe(recipe);
+
+                //ExecuteLoadRecipes();
+            }
         }
 
     }
