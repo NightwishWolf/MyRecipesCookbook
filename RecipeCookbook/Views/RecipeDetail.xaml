@@ -19,7 +19,7 @@
      
             </Grid.RowDefinitions>
             <Grid Grid.Column="0" Grid.Row="0" Margin="0,0,0,0">
-                <Image Source="{Binding recipeItem.ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" 
+                <Image Source="{Binding recipeItem.ImageUrl}" VerticalOptions="Fill" 
                        HorizontalOptions="Fill"   />
 
             </Grid>
