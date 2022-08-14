@@ -50,23 +50,23 @@ namespace RecipeCookbook.ViewModels
             }
         }
 
+        // This grabs the Id from the url and converts it
         public void ApplyQueryAttributes(IDictionary<string, string> query)
         {
             ItemId = Int32.Parse(HttpUtility.UrlDecode(query["ItemId"]));
         }
 
+        // Task to load the single recipe
         public async Task LoadItem(int itemId)
         {
             try
             {
-               recipeItem = await _recipeService.GetSingleRecipe(itemId);
-           
-                
+               recipeItem = await _recipeService.GetSingleRecipe(itemId);  
             }
 
             catch (Exception)
             {
-                Debug.WriteLine("Failed to Load Item");
+                Debug.WriteLine("Failed to load recipe");
             }
         }
 

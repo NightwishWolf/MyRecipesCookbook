@@ -25,12 +25,10 @@ namespace RecipeCookbook.ViewModels
 
         public EditRecipeViewModel()
         {
-         
             SaveRecipe = new Command(async () => await OnSaveRecipe());
         }
 
         private RecipeItem _recipeItem;
-
         public RecipeItem recipeItem
         {
             get { return _recipeItem; }
@@ -89,6 +87,7 @@ namespace RecipeCookbook.ViewModels
             ItemId = Int32.Parse(HttpUtility.UrlDecode(query["ItemId"]));
         }
 
+        // Task to load the recipe which is to be editted, so all the information is there
         public async Task LoadItem(int itemId)
         {
             try
@@ -112,6 +111,7 @@ namespace RecipeCookbook.ViewModels
             }
         }
 
+        // Task to actually save the new recipe
         private async Task OnSaveRecipe()
         {
             try

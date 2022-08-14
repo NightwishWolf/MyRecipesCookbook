@@ -1,4 +1,4 @@
-﻿using RecipeCookbook.Data;
+﻿
 using RecipeCookbook.Models;
 using RecipeCookbook.Services;
 using RecipeCookbook.Views;
@@ -20,8 +20,6 @@ namespace RecipeCookbook.ViewModels
         public ObservableCollection<RecipeItem> RecipeItems { get; }
         public Command LoadRecipes { get; }
         public Command GoToAddRecipeView { get; set; }
-        
-      //  public RecipeItem _selectedItem;
         public Command<RecipeItem> ItemTapped { get; }
         public Command<RecipeItem> DeleteRecipe { get; }
         public Command<RecipeItem> EditThisRecipe { get; }
@@ -35,6 +33,7 @@ namespace RecipeCookbook.ViewModels
             EditThisRecipe = new Command<RecipeItem>(async (recipe) => await OnEditRecipe(recipe));
         }
 
+        // This is the command to load all the recipes in the database
         public async Task ExecuteLoadRecipes()
         {
             IsBusy = true;
@@ -59,22 +58,25 @@ namespace RecipeCookbook.ViewModels
                 IsBusy = false;
             }
         }
-
-        public void OnAppearing() //Intialize function called from view
+        
+        // Intialize function called from view
+        public void OnAppearing() 
         {
-            IsBusy = true; //Trigger a ExecuteLoadItemsCommand command by setting to true
+            // Trigger a ExecuteLoadItemsCommand command by setting to true
+            IsBusy = true; 
         }
 
         private static async void OnGoToAddRecipeView(object obj)
         {
-            await Shell.Current.GoToAsync(nameof(AddRecipe)); //Open add recipe view
+            // Go to add recipe view
+            await Shell.Current.GoToAsync(nameof(AddRecipe)); 
         }
         private async Task OnItemSelected(RecipeItem recipeItem)
         {
             if (recipeItem == null)
                 return;
 
-            // This will push the ItemDetailPage onto the navigation stack
+            // This will make sure to go to the detail page with the Id of the recipe
             await Shell.Current.GoToAsync($"{nameof(RecipeDetail)}?ItemId={recipeItem.RecipeId}");
         }
 
@@ -83,7 +85,6 @@ namespace RecipeCookbook.ViewModels
             if (recipeItem == null)
                 return;
 
-            // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(EditRecipe)}?ItemId={recipeItem.RecipeId}");
         }
         private async Task OnDeleteRecipe(RecipeItem recipe)

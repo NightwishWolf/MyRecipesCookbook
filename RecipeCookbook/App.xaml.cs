@@ -1,4 +1,4 @@
-﻿using RecipeCookbook.Data;
+﻿
 using RecipeCookbook.Services;
 using RecipeCookbook.ViewModels;
 using RecipeCookbook.Views;
@@ -13,7 +13,7 @@ namespace RecipeCookbook
         public App()
         {
             InitializeComponent();
-            //  MainPage = new RecipeOverview();
+            //  register the things as dependency for dependency injection;
             DependencyService.Register<NewItemViewModel>();
             DependencyService.Register<RecipeService>();
             MainPage = new AppShell();

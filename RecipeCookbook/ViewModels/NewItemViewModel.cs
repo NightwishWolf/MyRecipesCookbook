@@ -29,26 +29,25 @@ namespace RecipeCookbook.ViewModels
         public string RecipeType { get => _recipeType; set => SetProperty(ref _recipeType, value); }
         public string RecipeTags { get => _recipeTags; set => SetProperty(ref _recipeTags, value); }
 
-
-        RecipeItem newRecipeItem = new();
-
         private readonly RecipeService recipeService;
         public Command SaveRecipe { get; }
 
         public NewItemViewModel()
         {
+            // this gets resolved without having to initialize it with new
             this.recipeService = DependencyService.Resolve<RecipeService>();
 
             SaveRecipe = new Command(OnSaveRecipe);
          
         }
 
+        // This command saves the new recipe
         [ICommand]
         private async void OnSaveRecipe(object obj)
         {
             var newRecipe = new RecipeItem();
 
-            // Any of the input fields are empty
+            // If any of the input fields are empty
             if (string.IsNullOrWhiteSpace(RecipeName) ||
                 string.IsNullOrWhiteSpace(ImageUrl) ||
                     string.IsNullOrWhiteSpace(Ingredients) ||
@@ -58,6 +57,7 @@ namespace RecipeCookbook.ViewModels
                     string.IsNullOrWhiteSpace(RecipeTags) 
                         )
             {
+                // There's a warning
                 await App.Current.MainPage.DisplayAlert("Adding new recipe failed", "You didn't fill in everything properly", "Okay");
                 return;
             }
@@ -72,7 +72,7 @@ namespace RecipeCookbook.ViewModels
             var responseContent = await recipeService.PostRecipe(newRecipe);
 
             {
-                await App.Current.MainPage.DisplayAlert("Adding new recipe succes", "Yay", "Okay");
+                await App.Current.MainPage.DisplayAlert("Succes!", "The recipe was added", "Okay");
             }
 
             await Shell.Current.GoToAsync("//RecipeOverview");

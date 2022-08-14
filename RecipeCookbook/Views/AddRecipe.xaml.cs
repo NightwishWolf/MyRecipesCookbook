@@ -17,6 +17,7 @@ namespace RecipeCookbook.Views
         public AddRecipe()
         {
             InitializeComponent();
+            // Resolve the viewmodel meaning you grab it
             BindingContext = _newItemViewModel = DependencyService.Resolve<NewItemViewModel>();
         }
     }

@@ -36,7 +36,6 @@
                 </Picker.ItemsSource>
             </Picker>
 
-
             <StackLayout>
 
                 <Button  VerticalOptions="Center" Text="Save recipe" 

@@ -8,20 +8,16 @@ namespace RecipeCookbook.ViewModels
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
+        // holds bool for state
         bool isBusy = false;
+
+        // getter and setter for public access
         public bool IsBusy
         {
             get { return isBusy; }
             set { SetProperty(ref isBusy, value); }
         }
-
-        string title = string.Empty;
-        public string Title
-        {
-            get { return title; }
-            set { SetProperty(ref title, value); }
-        }
-
+        // I need this for Property setting in NewItem viewmodel?
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",
             Action onChanged = null)
@@ -35,7 +31,10 @@ namespace RecipeCookbook.ViewModels
             return true;
         }
 
+        // Event watched by refreshviews to refresh their view
         public event PropertyChangedEventHandler PropertyChanged;
+        
+        // Triggers PropertyChanged event
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             var changed = PropertyChanged;

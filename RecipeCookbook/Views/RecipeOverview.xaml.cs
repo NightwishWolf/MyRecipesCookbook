@@ -25,16 +25,11 @@ namespace RecipeCookbook.Views
 
         }
 
+        // Call function in ViewModel
         protected override void OnAppearing()
         {
             base.OnAppearing();
             _recipeViewModel.OnAppearing();
         }
-
-        //async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    int recipeId = (e.CurrentSelection.FirstOrDefault() as RecipeItem).RecipeId;
-        //    await Shell.Current.GoToAsync($"recipedetails?RecipeId={recipeId}"); ;
-        //}
     }
 }
