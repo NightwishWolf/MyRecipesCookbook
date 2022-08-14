@@ -50,8 +50,12 @@ namespace RecipeCookbook.ViewModels
 
             // Any of the input fields are empty
             if (string.IsNullOrWhiteSpace(RecipeName) ||
+                string.IsNullOrWhiteSpace(ImageUrl) ||
                     string.IsNullOrWhiteSpace(Ingredients) ||
-                    string.IsNullOrWhiteSpace(RecipeBody)
+                    string.IsNullOrWhiteSpace(RecipeBody) ||
+                    Rating <= 0 || Rating > 10 ||
+                    string.IsNullOrWhiteSpace(RecipeType) ||
+                    string.IsNullOrWhiteSpace(RecipeTags) 
                         )
             {
                 await App.Current.MainPage.DisplayAlert("Adding new recipe failed", "You didn't fill in everything properly", "Okay");
@@ -66,6 +70,10 @@ namespace RecipeCookbook.ViewModels
             newRecipe.RecipeType = RecipeType;
             newRecipe.RecipeTags = RecipeTags;
             var responseContent = await recipeService.PostRecipe(newRecipe);
+
+            {
+                await App.Current.MainPage.DisplayAlert("Adding new recipe succes", "Yay", "Okay");
+            }
 
             await Shell.Current.GoToAsync("//RecipeOverview");
             IsBusy = false;

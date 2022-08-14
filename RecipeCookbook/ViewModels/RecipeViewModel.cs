@@ -95,9 +95,9 @@ namespace RecipeCookbook.ViewModels
             if (result == "Yes")
             {
                 await _recipeService.DeleteRecipe(recipe);
-
-                //ExecuteLoadRecipes();
             }
+
+            
         }
 
     }

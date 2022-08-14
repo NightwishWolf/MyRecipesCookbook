@@ -116,7 +116,7 @@ namespace RecipeCookbook.Services
             //If it was successfull the response is transformed again, a pop-up for success appears and the content is returned
             var responseJson = await response.Content.ReadAsStringAsync();
             var responseContent = JsonConvert.DeserializeObject<RecipeItem>(responseJson);
-            _ = Application.Current.MainPage.DisplayAlert("Succes!", "Recipe was added", "Okay");
+           // _ = Application.Current.MainPage.DisplayAlert("Succes!", "Recipe was added", "Okay");
             return responseContent;
         }
 

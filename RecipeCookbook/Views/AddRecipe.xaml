@@ -12,12 +12,12 @@
       
 
             <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-                <Entry x:Name="RecipeName" Text="{Binding RecipeName}" Placeholder="Recipe name" />
-                <Entry x:Name="ImageUrl" Text="{Binding ImageUrl}" Placeholder="Paste your recipe image url here" />
-                <Editor x:Name="Ingredients" Text="{Binding Ingredients}" AutoSize="TextChanges" Placeholder="Add your ingredients here" />
-                <Editor x:Name="RecipeBody" Text="{Binding RecipeBody}" AutoSize="TextChanges" Placeholder="Directions go here" />
-            <Entry x:Name="Rating" Text="{Binding Rating}" Placeholder="Rating" />
-            <Picker x:Name="pickerType" Title="Type of food" SelectedItem="{Binding RecipeType}">
+                <Entry x:Name="RecipeName" Text="{Binding RecipeName}" Placeholder="Recipe name" AutomationId="AddRecipeName" />
+            <Entry x:Name="ImageUrl" Text="{Binding ImageUrl}" Placeholder="Paste your recipe image url here" AutomationId="AddRecipeImage" />
+            <Editor x:Name="Ingredients" Text="{Binding Ingredients}" AutoSize="TextChanges" Placeholder="Add your ingredients here" AutomationId="AddRecipeIngredients"/>
+            <Editor x:Name="RecipeBody" Text="{Binding RecipeBody}" AutoSize="TextChanges" Placeholder="Directions go here" AutomationId="AddRecipeDirections"/>
+            <Entry x:Name="Rating" Text="{Binding Rating}" Placeholder="Rating" AutomationId="AddRecipeRatings"/>
+            <Picker x:Name="pickerType" Title="Type of food" SelectedItem="{Binding RecipeType}" AutomationId="AddRecipeType">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Dinner</x:String>
@@ -30,7 +30,7 @@
                     </Picker.ItemsSource>
                 </Picker>
 
-            <Picker x:Name="pickerTags" Title="Tags" SelectedItem="{Binding RecipeTags}">
+            <Picker x:Name="pickerTags" Title="Tags" SelectedItem="{Binding RecipeTags}" AutomationId="AddRecipeTags">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Oven dish</x:String>
@@ -43,7 +43,7 @@
 
             <StackLayout x:DataType="viewmodels:NewItemViewModel">
 
-            <Button  VerticalOptions="Center" Text="Save recipe" Command="{Binding SaveRecipe}"/>
+                <Button  VerticalOptions="Center" Text="Save recipe" Command="{Binding SaveRecipe}" AutomationId="AddRecipeButton"/>
 
 
             </StackLayout>
